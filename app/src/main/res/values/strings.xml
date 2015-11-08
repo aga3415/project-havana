@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Project Havana</string>
+
+    <string name="sign_in_tab">Logowanie</string>
+    <string name="sign_up_tab">Rejestracja</string>
+
+    <string name="first_tab">Wydarzenia</string>
+    <string name="second_tab">Boiska</string>
+    <string name="third_tab">Gracze</string>
+
+    <string name="no_internet">"Brak dostępu do Internetu. Sprawdź połączenie i spróbuj ponownie</string>
+    <string name="server_not_response">"Serwer nie odpowiada. Spróbuj ponownie później</string>
+
+    <!--błędy i podpowiedzi logowania-->
+    <string name="login_1_login_error">Podany login jest nieprawidłowy</string>
+    <string name="login_2_login_blocked">Konto zostało zablokowane</string>
+    <string name="login_3_login_nonactive">Konto jest nieaktywne</string>
+    <string name="login_4_login_wrong_pass">Podane hasło jest nieprawidłowe</string>
+
+    <string name="loginHint">Login</string>
+    <string name="passwordHint">Hasło</string>
+    <string name="emailHint">E-mail</string>
+    <string name="loginButton">"  Zaloguj  "</string>
+    <string name="registrationButton">"  Zarejestruj  "</string>
+
+
+    <!-- Błędy i podpowiedzi rejestracji -->
+    <string name="registration_1_login_empty">Wpisz login</string>
+    <string name="registration_2_password_week">Hasło jest za słabe</string>
+    <string name="registration_3_email_duplicate">"Podany e-mail już istnieje w systemie</string>
+    <string name="registration_4_email_empty">"Podaj adres email</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="api">http://ekipazboiska.pl:50400/</string>
+    <string name="title_activity_sign_in">SignIn</string>
+
+
+    <string name="freeSlotsTitle">"Wolne miejsca: "</string>
+    <string name="eventPriceTitle">"Cena: </string>
+    <string name="hello_world">Hello world!</string>
+</resources>

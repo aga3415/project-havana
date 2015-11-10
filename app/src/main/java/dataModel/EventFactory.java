@@ -12,24 +12,20 @@ import java.util.ArrayList;
  */
 public class EventFactory {
 
-    public static ArrayList<Event> createListOfEvents(String JSONString){
+    public static ArrayList<Event> createListOfEvents(String JSONString) throws JSONException {
         ArrayList<Event> events = new ArrayList<Event>();
 
 
         JSONArray jsonArray = null;
-        try {
+
             JSONObject jsonObject1 = new JSONObject(JSONString);
             jsonArray = jsonObject1.getJSONArray("data");
-            for (int i = 0; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 events.add(new Event(jsonArray.getJSONObject(i)));
+
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
         return events;
-
 
     }
 }

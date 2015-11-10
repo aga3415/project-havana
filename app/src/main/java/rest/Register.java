@@ -18,6 +18,7 @@ import java.io.InputStream;
 
 import fragments.SignUpFragment;
 import limiszewska.projecthavana.activities.R;
+import limiszewska.projecthavana.activities.SignInUp;
 
 /**
  * Created by Agnieszka on 2015-11-04.
@@ -100,6 +101,7 @@ public class Register extends AsyncTask<String, String, String> {
     protected  void onPostExecute(String result){
         if(ifError(result)){
             SettingConnections.token = result;
+            SignInUp.goToMainActivity(SettingConnections.context);
         };
     }
 

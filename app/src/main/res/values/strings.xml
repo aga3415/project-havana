@@ -10,6 +10,7 @@
 
     <string name="no_internet">"Brak dostępu do Internetu. Sprawdź połączenie i spróbuj ponownie</string>
     <string name="server_not_response">"Serwer nie odpowiada. Spróbuj ponownie później</string>
+    <string name="cannot_take_data">Nie można połączyć z serwerem. \nSprawdź połączenie z Internetem i spróbuj ponownie</string>
 
     <!--błędy i podpowiedzi logowania-->
     <string name="login_1_login_error">Podany login jest nieprawidłowy</string>
@@ -42,4 +43,12 @@
     <string name="freeSlotsTitle">"Wolne miejsca: "</string>
     <string name="eventPriceTitle">"Cena: </string>
     <string name="hello_world">Hello world!</string>
+
+    <!-- Szczegóły wydarzenia -->
+    <string name="eventShowDetailsTitle">Szczegóły wydarzenia</string>
+    <string name="whenTitle">Kiedy?</string>
+    <string name="whereTitle">Gdzie?</string>
+    <string name="withWhomTitle">Z kim?</string>
+    <string name="priceTitle">Za ile?</string>
+    <string name="title_activity_event_show_details">"Szczegóły wydarzenia"</string>
 </resources>

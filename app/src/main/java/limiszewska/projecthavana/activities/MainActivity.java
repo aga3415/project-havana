@@ -1,6 +1,8 @@
 package limiszewska.projecthavana.activities;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -26,7 +28,9 @@ public class MainActivity extends FragmentActivity {
         instance = this;
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), getApplicationContext()));
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getApplicationContext());
+        viewPager.setAdapter(pagerAdapter);
+
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabsStrip.setViewPager(viewPager);
@@ -38,7 +42,7 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                pagerAdapter.notifyDataSetChanged();
             }
 
 
@@ -55,6 +59,13 @@ public class MainActivity extends FragmentActivity {
 
 
         });
+
+    }
+
+    public static void goToShowEventDetailsActivity(Context context){
+        Intent eventDetailsActivity = new Intent(instance, EventShowDetails.class);
+        eventDetailsActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(eventDetailsActivity);
 
     }
 }

@@ -1,5 +1,6 @@
 package dataModel;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,7 +9,7 @@ import org.json.JSONObject;
  */
 public class Event {
 
-    String id;
+    public String id;
     String id_user;
     public String city;
     String id_field;
@@ -45,23 +46,33 @@ public class Event {
     }
 
     public Event(JSONObject jsonObject1){
+
         try {
+            JSONObject jsonField = jsonObject1.getJSONObject("field");
+            this.city = jsonField.getString("city");
+            //this.city = jsonArrayField.getJSONObject(0).toString();
+            this.field = jsonField.getString("field");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+        //    JSONArray jsonArrayEvent = jsonObject1.getJSONArray("id");
             this.id = jsonObject1.getString("id");
-            this.id_user = jsonObject1.getString("id_user");
-            this.city = jsonObject1.getString("city");
-            this.id_field = jsonObject1.getString("id_field");
-            this.field = jsonObject1.getString("field");
-            this.free_slots = 5;
-         //   this.free_slots = Integer.parseInt(jsonObject1.getString("free_slots"));
-            this.slots = Integer.parseInt(jsonObject1.getString("slots"));
+        //    this.id_user = jsonObject1.getString("id_user");
+
+        //    this.id_field = jsonObject1.getString("id_field");
+        //    this.field = jsonObject1.getString("field");
+        //    this.free_slots = 5;
+            this.free_slots = Integer.parseInt(jsonObject1.getString("freeSlots"));
+        //    this.slots = Integer.parseInt(jsonObject1.getString("slots"));
             this.date = jsonObject1.getString("date").substring(0,10);
-            this.login = jsonObject1.getString("login");
-            this.name = jsonObject1.getString("name");
-            this.reputation = Integer.parseInt(jsonObject1.getString("reputation"));
-            this.telephone = jsonObject1.getString("telephone");
-            this.avatar = jsonObject1.getString("avatar");
+        //    this.login = jsonObject1.getString("login");
+        //    this.name = jsonObject1.getString("name");
+        //    this.reputation = Integer.parseInt(jsonObject1.getString("reputation"));
+        //    this.telephone = jsonObject1.getString("telephone");
+        //    this.avatar = jsonObject1.getString("avatar");
             this.price = Integer.parseInt(jsonObject1.getString("price"));
-            this.hour = jsonObject1.getString("date").substring(11,16);
+            this.hour = jsonObject1.getString("date").substring(11, 16);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,263 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="limiszewska.projecthavana.activities.EventShowDetails">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/backgroundLandscape"
+        android:src = "@drawable/background4"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        android:alpha="1.0"
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/border_frame"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentTop="true"
+            android:text="@string/eventShowDetailsTitle"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/showEventDetailsTitleTextView"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/yourApplicationStatusLayout"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/showEventDetailsTitleTextView">
+
+            <CheckBox
+                style="@style/CustomCheckBox"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/joinToEventCheckBox"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/joinToEventCheckBox"
+                android:id="@+id/yourApplicationStatusTextView"
+                android:text="Oczekujesz na akcpetację"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yourApplicationStatusLayout"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/whenAndWhereLayout">
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cityAndFieldLayout"
+                android:gravity="left"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/whereTitleTextView"
+                    android:text="@string/whereTitle"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/whereTitleTextView"
+                    android:text="boisko takie i takie"
+                    android:id="@+id/fieldNameTextView"/>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fieldNameTextView"
+                    android:text="Poznań, Os. Bolesława Chrobrego 44"
+                    android:id="@+id/fieldAddressTextView"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/dateAndTimeLayout"
+                android:gravity="right"
+                android:layout_weight="0.0">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/whenTitleTextView"
+                    android:text="@string/whenTitle"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateTextView"
+                    android:text="2015-10-01"
+                    android:layout_below="@+id/whenTitleTextView"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hourTextView"
+                    android:layout_below="@+id/dateTextView"
+                    android:text="12:30"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/whenAndWhereLayout"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/priceAndSlotsLayout">
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/priceLayout"
+                android:gravity="left"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/priceTitleTextView"
+                    android:text="@string/priceTitle"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/priceTitleTextView"
+                    android:layout_centerHorizontal="true"
+                    android:text="15"
+                    android:id="@+id/priceValueTextView"/>
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/freeSlotsRelativeLayout"
+                android:gravity="right"
+                android:layout_weight="0.0">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/freeSlotsTitleText"
+                    android:text="@string/freeSlotsTitle"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/freeSlotsValueTextView"
+                    android:layout_centerHorizontal="true"
+                    android:text="25"
+                    android:layout_below="@+id/freeSlotsTitleText"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceAndSlotsLayout"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/membersLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/withWhomTitleTextView"
+                android:text="@string/withWhomTitle"
+                android:textStyle="bold"/>
+
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/withWhomTitleTextView"
+                android:id="@+id/membersListView">
+
+            </ListView>
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -76,6 +76,7 @@ public class Login extends AsyncTask<String, String, String> {
                     return data.getString("token");
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    return SettingConnections.context.getString(R.string.no_internet);
                 }
 
                 //return SettingConnections.getSthFromJSoon(SettingConnections.convertStreamToString(inputstream),"token");
@@ -99,6 +100,7 @@ public class Login extends AsyncTask<String, String, String> {
 
             } catch (IOException e) {
                 e.printStackTrace();
+                return SettingConnections.context.getString(R.string.no_internet);
             }
 
 
@@ -106,7 +108,7 @@ public class Login extends AsyncTask<String, String, String> {
 
 
 
-            return jsonObject.toString();
+
 
         }catch (IOException ex){
 

@@ -62,5 +62,9 @@ public class EventsListAdapter extends ArrayAdapter<Event> {
         return rowView;
     }
 
+    public String getEventId(int position){
+        return eventsList.get(position).id;
+    }
+
 
 }

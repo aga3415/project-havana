@@ -1,20 +1,14 @@
 package rest;
 
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.AdapterView;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,106 +17,89 @@ import java.util.ArrayList;
 import adapters.EventsListAdapter;
 import dataModel.Event;
 import dataModel.EventFactory;
-import fragments.SignInFragment;
-import fragments.SignUpFragment;
-import limiszewska.projecthavana.activities.FragmentEvents;
+import fragments.FragmentEvents;
+import limiszewska.projecthavana.activities.EventShowDetails;
 import limiszewska.projecthavana.activities.MainActivity;
 import limiszewska.projecthavana.activities.R;
-import limiszewska.projecthavana.activities.SignInUp;
 
 /**
  * Created by Agnieszka on 2015-11-04.
  */
-public class GetAllEvents extends AsyncTask<String, String, String> {
+public class GetAllEvents extends AsyncTask<Boolean, Boolean, Boolean> {
 
     FragmentEvents fragmentEvents;
     ArrayList<Event> events;
+
 
 
     String method = "events";
     HttpClient client = new DefaultHttpClient();
     HttpGet get = new HttpGet(SettingConnections.apiName.concat(method));
     HttpResponse response;
+    String responseString;
 
     public GetAllEvents(FragmentEvents fragmentEvents){
         this.fragmentEvents = fragmentEvents;
     }
 
     @Override
-    protected String doInBackground(String[] params) {
+    protected Boolean doInBackground(Boolean[] params) {
 
         get.setHeader("Authorization", SettingConnections.token);
         try{
             response = client.execute(get);
             InputStream inputstream = response.getEntity().getContent();
-            /*return*/ String responseString =  SettingConnections.convertStreamToString(inputstream);
-            //try {
-                //JSONObject jsonObject1 = new JSONObject(responseString);
-                //JSONArray jsonArray = jsonObject1.getJSONArray("data");
-                //JSONObject jsonObjectFromArray = jsonArray.getJSONObject(0);
-                //return jsonObjectFromArray.getString("id");
+            responseString =  SettingConnections.convertStreamToString(inputstream);
+
+            try {
                 events = EventFactory.createListOfEvents(responseString);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
 
-                return "ok";
+            return true;
 
-            //} catch (JSONException e) {
-              //  e.printStackTrace();
-            //}
+
         }catch(IOException e) {
             e.printStackTrace();
         }
 
-        /*
 
-        try{
-
-            StringEntity se = new StringEntity(jsonObject.toString());
-            se.setContentType("application/json;charset=UTF-8");
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json;charset=UTF-8"));
-
-
-
-            post.setEntity(se);
-            try {
-                response = client.execute(post);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            HttpEntity resultentity = response.getEntity();
-            InputStream inputstream = resultentity.getContent();
-            return SettingConnections.convertStreamToString(inputstream);
-
-
-        }catch (IOException ex){
-
-        }
-
-
-*/
-        return SettingConnections.context.getString(R.string.server_not_response);
+        return false;
 
 
     }
 
 
     @Override
-    protected  void onPostExecute(String result){
-        if(ifError(result)){
-            //SettingConnections.token = result;
-        };
+    protected  void onPostExecute(Boolean result){
+        if(result){
+            fragmentEvents.eventsListView.setVisibility(View.VISIBLE);
+            fragmentEvents.errorTextView.setVisibility(View.GONE);
+            fragmentEvents.adapter = new EventsListAdapter(MainActivity.instance, events);
+            fragmentEvents.eventsListView.setAdapter(fragmentEvents.adapter);
+            fragmentEvents.eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        fragmentEvents.adapter = new EventsListAdapter(MainActivity.instance, events);
-        fragmentEvents.eventsListView.setAdapter(fragmentEvents.adapter);
+                    String eventId = fragmentEvents.adapter.getEventId(position);
+                    MainActivity.goToShowEventDetailsActivity(SettingConnections.context);
+                    GetEventDetails getEventDetails = new GetEventDetails();
+                    getEventDetails.execute(eventId);
+
+                }
+            });
+        }else{
+            fragmentEvents.eventsListView.setVisibility(View.GONE);
+            fragmentEvents.errorTextView.setVisibility(View.VISIBLE);
+        }
+        /*fragmentEvents.eventsListView.setVisibility(View.GONE);
+        fragmentEvents.errorTextView.setVisibility(View.VISIBLE);
+        fragmentEvents.errorTextView.setText(responseString);
+        */
+
     }
 
-    protected boolean ifError(String result){
 
-        //signInFragment.text.setText("Dostepne zdarzenia: "+ result);
-        //if (signInFragment.text.getText().toString().equals(SettingConnections.context.getString(R.string.server_not_response))){
-        //    return false;
-        //}
-        return true;
-    }
 }

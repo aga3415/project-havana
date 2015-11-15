@@ -87,6 +87,8 @@ public class GetAllEvents extends AsyncTask<Boolean, Boolean, Boolean> {
                     MainActivity.goToShowEventDetailsActivity(SettingConnections.context);
                     GetEventDetails getEventDetails = new GetEventDetails();
                     getEventDetails.execute(eventId);
+                    GetAllApplicationsForEvent getAllApplicationsForEvent = new GetAllApplicationsForEvent();
+                    getAllApplicationsForEvent.execute(eventId);
 
                 }
             });

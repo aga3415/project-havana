@@ -45,10 +45,19 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- Szczegóły wydarzenia -->
-    <string name="eventShowDetailsTitle">Szczegóły wydarzenia</string>
-    <string name="whenTitle">Kiedy?</string>
-    <string name="whereTitle">Gdzie?</string>
-    <string name="withWhomTitle">Z kim?</string>
-    <string name="priceTitle">Za ile?</string>
-    <string name="title_activity_event_show_details">"Szczegóły wydarzenia"</string>
+    <string name="eventShowDetailsTitle">REGUŁY GRY</string>
+    <string name="whenTitle">KIEDY?</string>
+    <string name="whereTitle">GDZIE?</string>
+    <string name="withWhomTitle">Z KIM?</string>
+    <string name="priceTitle">ZA ILE?</string>
+    <string name="freeSlotsTitleUpperCase">WOLNE MIEJSCA:</string>
+    <string name="title_activity_event_show_details">"REGUŁY GRY"</string>
+
+    <!-- Status Twojego zgłoszenia do gry -->
+    <string name="joinToGame">Dołącz do gry!</string>
+    <string name="waitForAccept">Czekasz na potwierdzenie</string>
+    <string name="yourApplicationConfirmed">Grasz!</string>
+    <string name="yourApplicationRefused">"Odrzucono Twoje zgłoszenie"</string>
+
+
 </resources>

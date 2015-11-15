@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import limiszewska.projecthavana.activities.R;
@@ -24,6 +26,8 @@ public class SignInFragment extends Fragment {
     public static EditText password;
     public static Button signIn;
     private static SignInFragment instance = null;
+    public static RelativeLayout signInRelativeLayout;
+    public static ProgressBar startProgressBar;
     View view;
 
     private int mPage;
@@ -65,11 +69,15 @@ public class SignInFragment extends Fragment {
         login = (EditText) view.findViewById(R.id.loginText);
         password = (EditText) view.findViewById(R.id.passwordText);
         signIn = (Button) view.findViewById(R.id.loginButton);
+        signInRelativeLayout = (RelativeLayout) view.findViewById(R.id.editTextRelativeLayout);
+        startProgressBar = (ProgressBar) view.findViewById(R.id.startProgress);
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Login loginTask = new Login(SignInFragment.getInstance());
+                startProgressBar.setVisibility(View.VISIBLE);
+                signInRelativeLayout.setVisibility(View.GONE);
 
                 String loginString = login.getText().toString();
                 String passwordString = password.getText().toString();

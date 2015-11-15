@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import adapters.EventsListAdapter;
 import limiszewska.projecthavana.activities.R;
+import rest.GetAllApplicationsForEvent;
 import rest.GetAllEvents;
 
 /**
@@ -48,6 +49,7 @@ public class FragmentEvents extends Fragment {
         errorTextView = (TextView) view.findViewById(R.id.errorTextView);
         GetAllEvents getAllEvents = new GetAllEvents(this);
         getAllEvents.execute();
+
 
         return view;
     }

@@ -1,6 +1,7 @@
 package rest;
 
 import android.os.AsyncTask;
+import android.view.View;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -79,24 +80,6 @@ public class Login extends AsyncTask<String, String, String> {
                     return SettingConnections.context.getString(R.string.no_internet);
                 }
 
-                //return SettingConnections.getSthFromJSoon(SettingConnections.convertStreamToString(inputstream),"token");
-
-                /*Header contentencoding = response.getFirstHeader("Content-Encoding");
-                if(contentencoding != null && contentencoding.getValue().equalsIgnoreCase("gzip")) {
-                    inputstream = new GZIPInputStream(inputstream);
-                }
-                String resultstring = SettingConnections.convertStreamToString(inputstream);
-                inputstream.close();
-                resultstring = resultstring.substring(1,resultstring.length()-1);
-                //return resultstring;
-                //recvdref.setText(resultstring + "\n\n" + response.toString().getBytes());
-                JSONObject recvdjson = null;
-                try {
-                    recvdjson = new JSONObject(resultstring);
-                    return recvdjson.toString(2);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }*/
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -104,17 +87,9 @@ public class Login extends AsyncTask<String, String, String> {
             }
 
 
-
-
-
-
-
-
         }catch (IOException ex){
 
         }
-
-
 
         return SettingConnections.context.getString(R.string.no_internet);
 
@@ -127,11 +102,11 @@ public class Login extends AsyncTask<String, String, String> {
        if(ifError(result)){
            SettingConnections.token = result;
            SignInUp.goToMainActivity(SettingConnections.context);
-           //GetAllEvents getAllEvents = new GetAllEvents(signInFragment);
-           //getAllEvents.execute();
 
+       }
+           signInFragment.startProgressBar.setVisibility(View.GONE);
+           signInFragment.signInRelativeLayout.setVisibility(View.VISIBLE);
 
-       };
     }
 
     protected boolean ifError(String result){
@@ -151,10 +126,12 @@ public class Login extends AsyncTask<String, String, String> {
 
         };
 
-        signInFragment.text.setText(result);
-        if (signInFragment.text.getText().toString().equals(SettingConnections.context.getString(R.string.no_internet))){
+
+        if (result.equals(SettingConnections.context.getString(R.string.no_internet))){
+            signInFragment.text.setText(result);
             return false;
         }
+
         return true;
     }
 }

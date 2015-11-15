@@ -1,6 +1,7 @@
 package rest;
 
 import android.os.AsyncTask;
+import android.view.View;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -102,7 +103,10 @@ public class Register extends AsyncTask<String, String, String> {
         if(ifError(result)){
             SettingConnections.token = result;
             SignInUp.goToMainActivity(SettingConnections.context);
-        };
+        }
+            signUpFragment.startProgressBar.setVisibility(View.GONE);
+            signUpFragment.signUpRelativeLayout.setVisibility(View.VISIBLE);
+
     }
 
     protected boolean ifError(String result){
@@ -120,8 +124,9 @@ public class Register extends AsyncTask<String, String, String> {
                 signUpFragment.email.setError(SettingConnections.context.getString(R.string.registration_4_email_empty));
                 return false;
         };
-        signUpFragment.text.setText(result);
-        if (signUpFragment.text.getText().toString().equals(SettingConnections.context.getString(R.string.no_internet))){
+        //signUpFragment.text.setText(result);
+        if (result.equals(SettingConnections.context.getString(R.string.no_internet))){
+            signUpFragment.text.setText(result);
             return false;
         }
         return true;

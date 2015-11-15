@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import limiszewska.projecthavana.activities.R;
@@ -25,6 +27,8 @@ public class SignUpFragment extends Fragment {
     public static EditText password;
     public static Button signUp;
     private static SignUpFragment instance = null;
+    public static RelativeLayout signUpRelativeLayout;
+    public static ProgressBar startProgressBar;
     View view;
 
 
@@ -60,11 +64,16 @@ public class SignUpFragment extends Fragment {
         email = (EditText) view.findViewById(R.id.emailText);
         password = (EditText) view.findViewById(R.id.passwordText);
         signUp = (Button) view.findViewById(R.id.registerButton);
+        startProgressBar = (ProgressBar) view.findViewById(R.id.startProgress);
+        signUpRelativeLayout = (RelativeLayout) view.findViewById(R.id.editTextRelativeLayout);
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Register registerTask = new Register(SignUpFragment.getInstance());
+                startProgressBar.setVisibility(View.VISIBLE);
+                signUpRelativeLayout.setVisibility(View.GONE);
 
                 String loginString = login.getText().toString();
                 String emailString = email.getText().toString();

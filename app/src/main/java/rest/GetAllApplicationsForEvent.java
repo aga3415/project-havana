@@ -11,25 +11,25 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
+import adapters.ApplicationsListAdapter;
+import dataModel.Application;
+import dataModel.ApplicationFactory;
 import dataModel.Event;
 import limiszewska.projecthavana.activities.EventShowDetails;
-import limiszewska.projecthavana.activities.MainActivity;
 
 /**
- * Created by Agnieszka on 2015-11-10.
+ * Created by Agnieszka on 2015-11-11.
  */
-public class GetEventDetails extends AsyncTask<String, Boolean, Boolean> {
+public class GetAllApplicationsForEvent extends AsyncTask<String, Boolean, Boolean> {
 
-
-    String method = "events/";
+    String method = "applications/";
     HttpClient client = new DefaultHttpClient();
     HttpGet get;
     HttpResponse response;
     String responseString;
     JSONObject responseJSON;
-
-
 
 
     @Override
@@ -43,10 +43,9 @@ public class GetEventDetails extends AsyncTask<String, Boolean, Boolean> {
             response = client.execute(get);
             InputStream inputstream = response.getEntity().getContent();
             responseString =  SettingConnections.convertStreamToString(inputstream);
-            System.out.print(responseString);
             try {
                 responseJSON = new JSONObject(responseString);
-                responseJSON = responseJSON.getJSONObject("data");
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -63,9 +62,17 @@ public class GetEventDetails extends AsyncTask<String, Boolean, Boolean> {
 
     protected void onPostExecute(Boolean result){
         //MainActivity.goToShowEventDetailsActivity(SettingConnections.context);
-        Event event = Event.createDetailsAboutEvent(responseJSON);
-        if (event != null){
-            EventShowDetails.getInstance().setDetail(event) ;
+        ArrayList<Application> applicationArrayList = ApplicationFactory.createListOfApplicationsForEvent(responseJSON);
+        if (applicationArrayList != null){
+            Event event = EventShowDetails.getInstance().event;
+            Application application = new Application(event.user_name, event.id_user, event.id, "2");
+            applicationArrayList.add(application);
+            EventShowDetails.getInstance().listOfApplication = applicationArrayList;
+            //EventShowDetails.getInstance().adapter.notifyDataSetChanged();
+            EventShowDetails.getInstance().adapter = new ApplicationsListAdapter(EventShowDetails.getInstance(),
+                    EventShowDetails.getInstance().listOfApplication);
+            EventShowDetails.getInstance().membersListView.setAdapter(EventShowDetails.getInstance().adapter);
+            EventShowDetails.getInstance().adapter.notifyDataSetChanged();
         }else{
             //tutaj trzeba wymyslic jakis blad
         }

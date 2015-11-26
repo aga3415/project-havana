@@ -6,12 +6,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:id="@+id/userNameTextView"/>
+        android:id="@+id/userNameTextView"
+        android:focusable="false"
+        android:clickable="false"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:id="@+id/applicationStatusTextView"/>
+        android:id="@+id/applicationStatusTextView"
+        android:focusable="false"
+        android:clickable="false"/>
 
 </RelativeLayout>

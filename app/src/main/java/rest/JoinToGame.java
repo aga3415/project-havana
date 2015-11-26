@@ -18,6 +18,7 @@ import java.io.InputStream;
 
 import dataModel.Event;
 import limiszewska.projecthavana.activities.EventShowDetails;
+import limiszewska.projecthavana.activities.MainActivity;
 import limiszewska.projecthavana.activities.R;
 import limiszewska.projecthavana.activities.SignInUp;
 
@@ -26,7 +27,7 @@ import limiszewska.projecthavana.activities.SignInUp;
  */
 public class JoinToGame extends AsyncTask<String,Boolean, Boolean> {
 
-    String method = "applications/";
+    String method = "events/";
     HttpClient client = new DefaultHttpClient();
     HttpPost post;
     HttpResponse response;
@@ -42,7 +43,7 @@ public class JoinToGame extends AsyncTask<String,Boolean, Boolean> {
     protected Boolean doInBackground(String[] params) {
         //params [0] - event.id
 
-        post = new HttpPost(SettingConnections.apiName + method + params[0]);
+        post = new HttpPost(SettingConnections.apiName + method + params[0] + "/applications");
         post.setHeader("Authorization", SettingConnections.token);
         jsonObject = new JSONObject();
 
@@ -79,7 +80,7 @@ public class JoinToGame extends AsyncTask<String,Boolean, Boolean> {
 
         }
 
-        return false;
+        return true;
 
     }
 
@@ -91,10 +92,13 @@ public class JoinToGame extends AsyncTask<String,Boolean, Boolean> {
     protected  void onPostExecute(Boolean result){
         if (result){
             event.userStatus = "0";
+            //MainActivity.goToShowEventDetailsActivity(SettingConnections.context);
+            EventShowDetails.getInstance().setDetail(event);
             GetAllApplicationsForEvent getAllApplicationsForEvent = new GetAllApplicationsForEvent();
             getAllApplicationsForEvent.execute(EventShowDetails.getInstance().event.id);
         }else{
             EventShowDetails.getInstance().joinToEventCheckBox.setChecked(false);
+
         }
 
     }

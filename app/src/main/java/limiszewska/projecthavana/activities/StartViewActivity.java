@@ -31,6 +31,7 @@ public class StartViewActivity extends ActionBarActivity {
         startActivity(mainIntent);
 
 
+
         //errorTextView.setText((CharSequence) new GetConnection().execute());
 
 

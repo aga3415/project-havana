@@ -59,4 +59,6 @@ public class SignInUpPagerAdapter extends FragmentPagerAdapter {
         }
         return null;
     }
+
+
 }

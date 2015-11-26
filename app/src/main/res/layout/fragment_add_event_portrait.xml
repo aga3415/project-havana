@@ -1,22 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_marginLeft="50dp"
-    android:layout_marginRight="50dp"
-    android:background="@color/transparent">
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="30dp"
+    android:background="@color/transparent"
+    android:orientation="vertical">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/GreyBackground"
-        android:paddingBottom="@color/yellow">
 
 
-    </RelativeLayout>
+
+
+
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_frame"
+                android:padding="10dp"
+                android:id="@+id/tableLayout"
+                android:layout_alignParentTop="true"
+                android:layout_weight="1"
+                android:stretchColumns="*" >
+
+                <TableRow
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_span="1"
+                        android:layout_weight="1.0"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/whereTitle"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="10dp"
+                    android:weightSum="1"
+                >
+
+                    <EditText
+                        android:layout_column="0"
+                        android:hint="Miasto"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/cityEditText"
+                        android:textSize="12dp"
+                        />
+
+                    <EditText
+                        android:layout_span="1"
+                        android:hint="Boisko"
+                        android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
+                        android:id="@+id/fieldEditText"
+                        android:textSize="12dp"/>
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_span="1"
+                        android:layout_weight="1.0"
+                        android:text="@string/whenTitle"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="10dp"
+                    android:weightSum="1"
+                    android:layout_width="fill_parent">
+
+                    <LinearLayout
+                        android:layout_column="0"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:hint="Data od..."
+                            android:layout_height="wrap_content"
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/dateTextView"
+                            android:editable="false"
+                            android:textSize="12dp"
+                            />
+                        <EditText
+                            android:hint="Data do..."
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/date2TextView"
+                            android:editable="false"
+                            android:textSize="12dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_column="1">
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:hint="Start o..."
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/hourTextView"
+                            android:editable="false"
+                            android:textSize="12dp"/>
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1.0"
+                            android:hint="do..."
+                            android:layout_height="fill_parent"
+                            android:id="@+id/hourTextView2"
+                            android:editable="false"
+                            android:textSize="12dp"/>
+
+
+                    </LinearLayout>
+
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_column="0"
+                        android:text="@string/priceTitle"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/freeSlotsTitleUpperCase"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="10dp"
+                >
+                    <LinearLayout
+                        android:layout_column="0"
+                        android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1.0"
+                        android:hint="Cena..."
+                        android:layout_height="fill_parent"
+                        android:id="@+id/priceTextView"
+                        android:textSize="12dp"
+                        android:inputType="number"
+
+                        />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_column="0"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:layout_weight="1.0"
+                            android:layout_width="fill_parent"
+                            android:hint="Wolne miejsca..."
+                            android:layout_height="fill_parent"
+                            android:id="@+id/freeSlotsTextView"
+                            android:textSize="12dp"
+                            android:inputType="number"
+
+                            />
+
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="10dp"
+                    android:weightSum="1">
+                    <!--<LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tableLayout"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        >
+                    -->
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="@string/addEvent"
+                            android:background="@color/yellow"
+                            android:id="@+id/addEventButton"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_column="0"
+
+                            />
+
+                        <Button
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            android:text="@string/findEvent"
+                            android:background="@color/yellow"
+                            android:id="@+id/findEventButton"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_column="1"
+                            />
+
+                    <!--</LinearLayout> -->
+
+                </TableRow>
+
+            </TableLayout>
+
+
+
+
+
 
 </RelativeLayout>

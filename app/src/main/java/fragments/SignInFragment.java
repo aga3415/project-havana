@@ -3,17 +3,21 @@ package fragments;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import limiszewska.projecthavana.activities.R;
+import limiszewska.projecthavana.activities.SignInUp;
 import rest.Login;
+import storageData.SignInPreferences;
 
 /**
  * Created by Agnieszka on 2015-11-04.
@@ -28,7 +32,10 @@ public class SignInFragment extends Fragment {
     private static SignInFragment instance = null;
     public static RelativeLayout signInRelativeLayout;
     public static ProgressBar startProgressBar;
+    CheckBox rememberMe;
     View view;
+    Login loginTask;
+    boolean isrememberUser = false;
 
     private int mPage;
 
@@ -51,6 +58,17 @@ public class SignInFragment extends Fragment {
         mPage = 0;
         instance = this;
 
+        //SignInPreferences.deletePreferences(SignInUp.instance);
+        Pair pref = SignInPreferences.checkPreferences(SignInUp.instance);
+
+        if (pref != null){
+            isrememberUser = true;
+            loginTask = new Login(SignInFragment.getInstance());
+            trySignIn((String) pref.first, (String) pref.second);
+        }else{
+            isrememberUser = false;
+        }
+
 
     }
 
@@ -71,17 +89,27 @@ public class SignInFragment extends Fragment {
         signIn = (Button) view.findViewById(R.id.loginButton);
         signInRelativeLayout = (RelativeLayout) view.findViewById(R.id.editTextRelativeLayout);
         startProgressBar = (ProgressBar) view.findViewById(R.id.startProgress);
+        rememberMe = (CheckBox) view.findViewById(R.id.rememberMe);
+        loginTask = new Login(SignInFragment.getInstance());
+
+        if (!isrememberUser){
+            signInRelativeLayout.setVisibility(View.VISIBLE);
+            startProgressBar.setVisibility(View.GONE);
+        }
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login loginTask = new Login(SignInFragment.getInstance());
+
                 startProgressBar.setVisibility(View.VISIBLE);
                 signInRelativeLayout.setVisibility(View.GONE);
 
                 String loginString = login.getText().toString();
                 String passwordString = password.getText().toString();
                 text.setText("");
+                if (rememberMe.isChecked()){
+                    SignInPreferences.setPreferences(SignInUp.instance, loginString, passwordString);
+                }
 
                 loginTask.execute(loginString, passwordString);
             }
@@ -90,6 +118,10 @@ public class SignInFragment extends Fragment {
 
 
         return view;
+    }
+
+    public void trySignIn(String email, String password){
+        loginTask.execute(email, password);
     }
 
 

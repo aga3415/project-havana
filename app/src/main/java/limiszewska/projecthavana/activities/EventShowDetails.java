@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
@@ -16,6 +17,7 @@ import adapters.ApplicationsListAdapter;
 import dataModel.Application;
 import dataModel.Event;
 import rest.GetEventDetails;
+import rest.GetUserDetails;
 import rest.JoinToGame;
 import rest.SettingConnections;
 
@@ -92,9 +94,20 @@ public class EventShowDetails extends Activity {
             }
         }
 
+        membersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                GetUserDetails getUserDetails = new GetUserDetails();
+                getUserDetails.execute(adapter.getUserId(position));
+                MainActivity.goToShowUserDetailsActivity(SettingConnections.context);
+
+            }});
+
         if (adapter != null){
             membersListView.setAdapter(adapter);
         }
+
+
 
 
 
@@ -119,6 +132,7 @@ public class EventShowDetails extends Activity {
                 yourApplicationStatusTextView.setText(context.getString(R.string.joinToGame));
                 joinToEventCheckBox.setChecked(false);
                 joinToEventCheckBox.setFocusable(true);
+                joinToEventCheckBox.setClickable(true);
                 break;
             case "-1" :
                 yourApplicationStatusTextView.setText(context.getString(R.string.yourApplicationRefused));
@@ -128,11 +142,13 @@ public class EventShowDetails extends Activity {
                 yourApplicationStatusTextView.setText(context.getString(R.string.waitForAccept));
                 joinToEventCheckBox.setChecked(true);
                 joinToEventCheckBox.setFocusable(false);
+                joinToEventCheckBox.setClickable(false);
                 break;
             case "1" :
                 yourApplicationStatusTextView.setText(context.getString(R.string.yourApplicationConfirmed));
                 joinToEventCheckBox.setChecked(true);
                 joinToEventCheckBox.setFocusable(false);
+                joinToEventCheckBox.setClickable(false);
                 break;
             case "2" :
                 yourApplicationStatusTextView.setVisibility(View.GONE);

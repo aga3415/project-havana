@@ -32,7 +32,8 @@ public class Login extends AsyncTask<String, String, String> {
     SignInFragment signInFragment;
 
     public Login(SignInFragment fragment){
-        this.signInFragment = fragment;
+        /*this.signInFragment = fragment;*/
+        this.signInFragment = SignInFragment.getInstance();
     }
 
     JSONObject jsonObject;

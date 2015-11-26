@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/border_frame"
+>
+
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp"
+        android:id="@+id/tableLayout"
+        android:layout_centerInParent="true"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:stretchColumns="*">
+
+
+
+        <TableRow
+            android:padding="10dp"
+            android:layout_height="fill_parent"
+            android:weightSum="1">
+            <TextView
+                android:layout_column="0"
+                android:layout_weight="1.0"
+                android:text="@string/whereTitle"
+                android:textStyle="bold"
+                android:layout_gravity="bottom"
+                android:layout_height="fill_parent"
+                android:textSize="14dp"
+            />
+
+
+            <EditText
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:hint="Miasto"
+                android:layout_height="fill_parent"
+                android:id="@+id/cityEditText"
+                android:textSize="12dp"
+                android:paddingRight="10dp"
+                />
+
+            <EditText
+                android:layout_column="2"
+                android:layout_weight="1.0"
+                android:hint="Boisko"
+                android:layout_height="fill_parent"
+                android:id="@+id/fieldEditText"
+                android:textSize="12dp"/>
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:padding="10dp"
+            android:layout_height="fill_parent"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_column="0"
+                android:text="@string/whenTitle"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+            />
+
+            <LinearLayout
+                android:layout_column="1"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_gravity="top">
+
+                <EditText
+                    android:hint="Data od..."
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/dateTextView"
+                    android:editable="false"
+                    android:textSize="12dp"
+                    />
+                <EditText
+                    android:hint="Data do..."
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/date2TextView"
+                    android:editable="false"
+                    android:textSize="12dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_column="2">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:hint="Start o..."
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/hourTextView"
+                    android:editable="false"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1.0"
+                    android:hint="do..."
+                    android:layout_height="fill_parent"
+                    android:id="@+id/hourTextView2"
+                    android:editable="false"
+                    android:textSize="12dp"/>
+
+
+            </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow
+            android:padding="10dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:weightSum="1">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_weight="1.0"
+                android:text="@string/priceTitle"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:textSize="14dp"
+                android:layout_column="0"/>
+            <!---->
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_weight="1.0"
+                android:hint="Cena"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:id="@+id/priceTextView"
+                android:textSize="12dp"
+                android:layout_column="1"
+                android:layout_gravity="center_vertical"
+                android:inputType="number"
+
+                />
+            <!---->
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/addEvent"
+                android:background="@color/yellow"
+                android:id="@+id/addEventButton"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+
+                />
+
+
+        </TableRow>
+
+        <TableRow
+            android:padding="10dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_column="0"
+                android:layout_weight="1.0"
+                android:text="LICZBA \nOSÓB"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:textSize="14dp"/>
+            <!---->
+
+            <EditText
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_weight="1.0"
+                android:hint="Wolne Miejsca"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/freeSlotsTextView"
+                android:textSize="12dp"
+                android:layout_gravity="center_vertical"
+                android:inputType="number"
+
+                />
+
+
+            <Button
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:text="@string/findEvent"
+                android:background="@color/yellow"
+                android:id="@+id/findEventButton"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

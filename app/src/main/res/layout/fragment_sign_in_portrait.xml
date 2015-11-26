@@ -27,7 +27,7 @@
             android:indeterminateTintMode="src_atop"
             android:indeterminateTint="@color/yellow"
             android:layout_below="@+id/logoImage"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
 
 
@@ -35,7 +35,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/logoImage"
-            android:id="@+id/editTextRelativeLayout">
+            android:id="@+id/editTextRelativeLayout"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,18 +70,45 @@
                 android:hint="@string/passwordHint"
                 android:layout_below="@id/loginText"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:background="@color/white"
                 android:alpha="0.3"
                 android:inputType="textPassword"/>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordText"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/rememberMeLayout">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    style="@style/CustomCheckBox"
+                    android:id="@+id/rememberMe"
+                    android:checked="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zapamiętaj mnie"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/rememberMe"
+                    android:textColor="@color/white"
+                    />
+
+            </RelativeLayout>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/loginButton"
-                android:layout_below="@id/passwordText"
+                android:layout_below="@id/rememberMeLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:text="@string/loginButton"

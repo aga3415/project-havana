@@ -15,9 +15,8 @@ import com.astuetz.PagerSlidingTabStrip;
 
 public class MainActivity extends FragmentActivity {
 
-    ViewPager viewPager;
-    ActionBar actionBar;
-    PagerAdapter pagerAdapter;
+    static ViewPager viewPager;
+    static PagerAdapter pagerAdapter;
     public static MainActivity instance;
 
 
@@ -27,7 +26,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         instance = this;
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 
@@ -66,6 +65,23 @@ public class MainActivity extends FragmentActivity {
         Intent eventDetailsActivity = new Intent(instance, EventShowDetails.class);
         eventDetailsActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(eventDetailsActivity);
+
+    }
+
+    public static void goToShowUserDetailsActivity(Context context){
+        Intent userDetailsActiivity = new Intent(instance, UserShowDetails.class);
+        userDetailsActiivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(userDetailsActiivity);
+    }
+
+    public void changePage(int page){
+
+        //if (viewPager == null) {
+        //    System.out.print("ViewPager jest nullem");
+        //} else{
+           viewPager.setCurrentItem(page);
+            pagerAdapter.notifyDataSetChanged();
+        //}
 
     }
 }

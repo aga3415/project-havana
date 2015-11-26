@@ -12,30 +12,23 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 
-import dataModel.Event;
-import limiszewska.projecthavana.activities.EventShowDetails;
-import limiszewska.projecthavana.activities.MainActivity;
+import dataModel.User;
+import limiszewska.projecthavana.activities.UserShowDetails;
 
 /**
- * Created by Agnieszka on 2015-11-10.
+ * Created by Agnieszka on 2015-11-26.
  */
-public class GetEventDetails extends AsyncTask<String, Boolean, Boolean> {
+public class GetUserDetails extends AsyncTask<String, Boolean, Boolean>{
 
-
-    String method = "events/";
+    String method = "users/";
     HttpClient client = new DefaultHttpClient();
     HttpGet get;
     HttpResponse response;
     String responseString;
     JSONObject responseJSON;
-
-
-
-
     @Override
     protected Boolean doInBackground(String... params) {
-        //params[0] id eventu ktory chce sciagnac
-
+        //params[0] - userID
         get = new HttpGet(SettingConnections.apiName + method + params[0]);
         get.setHeader("Authorization", SettingConnections.token);
 
@@ -62,13 +55,15 @@ public class GetEventDetails extends AsyncTask<String, Boolean, Boolean> {
     }
 
     protected void onPostExecute(Boolean result){
-        //MainActivity.goToShowEventDetailsActivity(SettingConnections.context);
-        Event event = Event.createDetailsAboutEvent(responseJSON);
-        if (event != null){
-            EventShowDetails.getInstance().setDetail(event) ;
+
+        if (result){
+            UserShowDetails.setUser(new User(responseJSON));
+            UserShowDetails.getInstance().setDetailAboutUser();
         }else{
-            //tutaj trzeba wymyslic jakis blad
+            //tutaj trzeba bedzie wymyslic jakis blad
         }
-        ;
+
     }
+
+
 }

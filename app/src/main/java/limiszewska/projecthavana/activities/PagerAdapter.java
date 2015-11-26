@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.Locale;
 
+import fragments.AddEventFragment;
 import fragments.FragmentEvents;
+import fragments.FragmentFindEvents;
 
 
 /**
@@ -29,20 +31,20 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i) {
 
-        return new FragmentEvents().newInstance(i+1);
+        //return new FragmentEvents().newInstance(i+1);
 
-        /*switch (i){
+        switch (i){
 
             case 0:
                return new FragmentEvents();
 
             case 1:
-                return new FragmentFields();
+                return new AddEventFragment();
 
             case 2:
-                return new FragmentUsers();
+                return new FragmentFindEvents();
         }
-        return null;*/
+        return null;
     }
 
     @Override

@@ -8,40 +8,29 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
 import adapters.EventsListAdapter;
 import limiszewska.projecthavana.activities.R;
-import rest.GetAllApplicationsForEvent;
 import rest.GetAllEvents;
 
 /**
- * Created by Agnieszka on 2015-10-19.
+ * Created by Agnieszka on 2015-11-24.
  */
-public class FragmentEvents extends Fragment {
-
-    public static final String ARG_PAGE = "Fragment Events";
+public class FragmentFindEvents  extends Fragment{
+    public static final String ARG_PAGE = "Fragment Find Events";
     public ListView eventsListView;
     public EventsListAdapter adapter;
     public TextView errorTextView;
-    public static FragmentEvents instance;
+    public static FragmentFindEvents instance;
 
     public static int mPage;
 
-    public static FragmentEvents newInstance(int page) {
-        Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
-        FragmentEvents fragment = new FragmentEvents();
-        fragment.setArguments(args);
-        mPage = page;
-        instance = fragment;
-        return fragment;
 
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
 
         //mPage = getArguments().getInt(ARG_PAGE);
     }
@@ -53,9 +42,6 @@ public class FragmentEvents extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         eventsListView = (ListView) view.findViewById(R.id.eventsListView);
         errorTextView = (TextView) view.findViewById(R.id.errorTextView);
-        GetAllEvents getAllEvents = new GetAllEvents(this);
-        getAllEvents.execute();
-
 
         return view;
     }

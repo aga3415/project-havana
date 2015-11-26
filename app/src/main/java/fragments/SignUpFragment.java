@@ -7,13 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import limiszewska.projecthavana.activities.R;
+import limiszewska.projecthavana.activities.SignInUp;
 import rest.Register;
+import storageData.SignInPreferences;
 
 /**
  * Created by Agnieszka on 2015-11-04.
@@ -29,6 +32,7 @@ public class SignUpFragment extends Fragment {
     private static SignUpFragment instance = null;
     public static RelativeLayout signUpRelativeLayout;
     public static ProgressBar startProgressBar;
+    CheckBox rememberMe;
     View view;
 
 
@@ -66,6 +70,7 @@ public class SignUpFragment extends Fragment {
         signUp = (Button) view.findViewById(R.id.registerButton);
         startProgressBar = (ProgressBar) view.findViewById(R.id.startProgress);
         signUpRelativeLayout = (RelativeLayout) view.findViewById(R.id.editTextRelativeLayout);
+        rememberMe = (CheckBox) view.findViewById(R.id.rememberMe);
 
 
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +84,9 @@ public class SignUpFragment extends Fragment {
                 String emailString = email.getText().toString();
                 String passwordString = password.getText().toString();
                 text.setText("");
+                if (rememberMe.isChecked()){
+                    SignInPreferences.setPreferences(SignInUp.instance, loginString, passwordString);
+                }
 
                 registerTask.execute(loginString, emailString, passwordString);
             }

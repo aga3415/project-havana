@@ -59,5 +59,25 @@
     <string name="yourApplicationConfirmed">Grasz!</string>
     <string name="yourApplicationRefused">"Odrzucono Twoje zgłoszenie"</string>
 
+    <!-- Dodawanie wydarzenia -->
+    <string name="addEvent">"DODAJ"</string>
+    <string name="city">MIASTO</string>
+    <string name="field">BOISKO</string>
+    <string name="date">DATA</string>
+    <string name="hour">GODZINA</string>
+
+    <string name="findEvent">"WYSZUKAJ"</string>
+
+
+    <!--Informacje o użytkowniku -->
+    <string name="userTitle">"UŻYTKOWNIK"</string>
+    <string name="userReputation">"REPUTACJA"</string>
+    <string name="giveMarkToUser">"OCEŃ UŻYTKOWNIKA"</string>
+    <string name="giveMarkToUserButton">"OCEŃ"</string>
+    <string name="addComments">"Dodaj komentarz..."</string>
+    <string name="addCommentsButton">DODAJ</string>
+    <string name="comments">KOMENTARZE</string>
+
+
 
 </resources>

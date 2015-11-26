@@ -4,6 +4,22 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
        <!-- <item name="android:windowNoTitle">true</item> -->
+        <!--<item name="android:colorControlNormal">
+
+        </item>
+
+        -->
+
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
+        <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogTheme</item>
+
+        <item name="android:colorControlActivated">
+            @color/yellow
+        </item>
+        <item name="android:colorControlHighlight">
+            @color/yellow
+        </item>
+
     </style>
 
     <style name="CustomCheckBox">
@@ -23,6 +39,20 @@
         <item name="android:colorControlActivated">
             @color/yellow
         </item>
+    </style>
+
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <!--<item name="android:datePickerStyle">@style/MyDatePickerStyle</item>-->
+        <item name="android:colorAccent">@color/yellow</item>
+    </style>
+
+    <style name="MyTimePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">@color/yellow</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/yellow</item>
+        <item name="android:colorAccent">@color/yellow</item>
     </style>
 
 </resources>

@@ -24,7 +24,7 @@ import limiszewska.projecthavana.activities.EventShowDetails;
  */
 public class GetAllApplicationsForEvent extends AsyncTask<String, Boolean, Boolean> {
 
-    String method = "applications/";
+    String method = "events/";
     HttpClient client = new DefaultHttpClient();
     HttpGet get;
     HttpResponse response;
@@ -36,7 +36,7 @@ public class GetAllApplicationsForEvent extends AsyncTask<String, Boolean, Boole
     protected Boolean doInBackground(String... params) {
         //params[0] id eventu ktory chce sciagnac
 
-        get = new HttpGet(SettingConnections.apiName + method + params[0]);
+        get = new HttpGet(SettingConnections.apiName + method + params[0] + "/applications");
         get.setHeader("Authorization", SettingConnections.token);
 
         try {

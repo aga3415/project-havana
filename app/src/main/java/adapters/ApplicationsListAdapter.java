@@ -12,7 +12,9 @@ import java.util.Collections;
 
 import dataModel.Application;
 import dataModel.Event;
+import limiszewska.projecthavana.activities.MainActivity;
 import limiszewska.projecthavana.activities.R;
+import rest.SettingConnections;
 
 /**
  * Created by Agnieszka on 2015-11-11.
@@ -47,6 +49,14 @@ public class ApplicationsListAdapter extends ArrayAdapter<Application>{
             viewHolder.userNameTextView = (TextView) rowView.findViewById(R.id.userNameTextView);
             viewHolder.applicationStatusTextView = (TextView) rowView.findViewById(R.id.applicationStatusTextView);
             rowView.setTag(viewHolder);
+
+            rowView.setClickable(false);
+            /*rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.goToShowUserDetailsActivity(SettingConnections.context);
+                }
+            });*/
         }else{
             viewHolder = (ViewHolder) rowView.getTag();
         }
@@ -74,6 +84,10 @@ public class ApplicationsListAdapter extends ArrayAdapter<Application>{
 
     public String getApplicationId(int position){
         return applicationsList.get(position).id;
+    }
+
+    public String getUserId(int position){
+        return applicationsList.get(position).idUser;
     }
 
 

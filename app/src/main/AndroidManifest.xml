@@ -37,6 +37,12 @@
             android:name=".UserShowDetails">
 
             </activity>
+        <activity
+            android:name=".Cities">
+        </activity>
+        <activity
+            android:name=".Fields">
+        </activity>
 
     </application>
 

@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="limiszewska.projecthavana.activities.Cities">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/backgroundLandscape"
+        android:src = "@drawable/background4"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        android:alpha="1.0"
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/border_frame"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentTop="true"
+            android:text="@string/fieldsTitle"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/fieldsTitle"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/fieldsTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/addFindFieldsLayout">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_weight="1.0"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/fieldssEditText"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/findCity"
+                    android:background="@color/yellow"
+                    android:layout_marginBottom="3dp"
+                    android:id="@+id/fieldsFindButton"/>
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:text="@string/addCity"
+                    android:background="@color/yellow"
+                    android:id="@+id/fieldsAddButton"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addFindFieldsLayout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/fieldsList">
+
+        </ListView>
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

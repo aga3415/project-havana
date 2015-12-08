@@ -77,6 +77,15 @@
     <string name="addComments">"Dodaj komentarz..."</string>
     <string name="addCommentsButton">DODAJ</string>
     <string name="comments">KOMENTARZE</string>
+    <string name="toLongCommentError">"Komentarz jest zbyt długi. Max wynosi 1000 znaków"</string>
+
+    <!--Miasta-->
+    <string name="citiesTitle">MIASTA</string>
+    <string name="addCity">DODAJ</string>
+    <string name="findCity">"  WYSZUKAJ  "</string>
+
+    <!--Boiska-->
+    <string name="fieldsTitle">BOISKA</string>
 
 
 

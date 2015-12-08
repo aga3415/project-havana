@@ -1,0 +1,207 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="limiszewska.projecthavana.activities.EventShowDetails">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/backgroundLandscape"
+        android:src = "@drawable/background4"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        android:alpha="1.0"
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_frame"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/showUserDetailsFrameLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentTop="true"
+            android:text="@string/userTitle"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/userTitle"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailsAboutUserLayout"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/userTitle"
+            >
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:background="@color/yellow"
+                android:id="@+id/avatarLayout">
+
+                <!--Tutaj jest zarezerwowane miejsce na avatar uzytkownika -->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/avatarLayout"
+                android:id="@+id/userTextLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Login"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/userLogin"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userLogin"
+                    android:text="@string/userReputation"
+                    android:id="@+id/userReputationTitle"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@id/userReputationTitle"
+                    android:orientation="horizontal"
+                    >
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stepSize="0.2"
+                        android:numStars="1"
+                        android:rating="0.4"
+                        android:id="@+id/reputationMark"/>
+
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.4"
+                        android:textSize="16dp"
+                        android:id="@+id/reputationMarkText"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/userTextLayout"
+                android:id="@+id/giveMarkLayout">
+
+                <TableRow>
+                    <RatingBar
+                        android:layout_column="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:stepSize="1"
+                        android:numStars="5"
+                        android:id="@+id/giveReputationMark"
+                        android:isIndicator="false"
+                        android:rating="0"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.0"
+
+                        />
+
+                    <!--style="?android:attr/ratingBarStyleIndicator"-->
+                    <!--android:transformPivotX="0dp"-->
+                    <!--android:scaleX="0.5"
+                        android:scaleY="0.5"-->
+
+                    <Button
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@color/yellow"
+                        android:text="Oceń"
+                        android:layout_weight="1.0"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/addMarkButton"/>
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="5dp">
+
+                    <EditText
+                        android:layout_column="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/addComments"
+                        android:textSize="12dp"
+                        android:maxWidth="150dp"
+                        android:layout_weight="0"
+                        android:id="@+id/writeCommentEditText"/>
+
+                    <Button
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/addCommentsButton"
+                        android:background="@color/yellow"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.0"
+                        android:id="@+id/addCommentButton"/>
+
+                </TableRow>
+
+
+
+            </TableLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsAboutUserLayout"
+            android:id="@+id/commentsListView"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp">
+
+        </ListView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -2,6 +2,7 @@ package fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,9 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import dataModel.City;
+import limiszewska.projecthavana.activities.Cities;
 import limiszewska.projecthavana.activities.MainActivity;
 import limiszewska.projecthavana.activities.R;
 import rest.Find;
+import rest.GetFields;
+import rest.SettingConnections;
 
 /**
  * Created by Agnieszka on 2015-11-16.
@@ -30,7 +35,7 @@ public class AddEventFragment extends Fragment {
     public static final String ARG_PAGE = "Fragment Sign In";
     private static AddEventFragment instance = null;
     public static ProgressBar startProgressBar;
-    EditText city, field, data1,data2, time1, time2, price, freeSlots;
+    public static EditText city, field, data1,data2, time1, time2, price, freeSlots;
     View view;
     Button findEvent;
     Button addEvent;
@@ -39,6 +44,7 @@ public class AddEventFragment extends Fragment {
     int year, month, day;
     private SimpleDateFormat dateFormatter;
 
+    public static City cityData;
     private int mPage;
 
     public static AddEventFragment getInstance() {
@@ -59,6 +65,9 @@ public class AddEventFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPage = 0;
         instance = this;
+
+        GetFields getFields = new GetFields();
+        getFields.execute();
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         Calendar newCalendar = Calendar.getInstance();
@@ -113,6 +122,10 @@ public class AddEventFragment extends Fragment {
         }
 
         city = (EditText) view.findViewById(R.id.cityEditText);
+
+        if (cityData != null){
+            city.setText(cityData.getName());
+        }
         field = (EditText) view.findViewById(R.id.fieldEditText);
         data1 = (EditText) view.findViewById(R.id.dateTextView);
         data2 = (EditText) view.findViewById(R.id.date2TextView);
@@ -192,7 +205,8 @@ public class AddEventFragment extends Fragment {
                 Find find = new Find();
 
                 MainActivity.instance.changePage(2);
-                find.execute(cityParam, fieldParam, fullDateFrom, fullDateTo, priceParams, freeSlotsParams);
+                find.execute(cityParam, fieldParam, fullDateFrom, fullDateTo, priceParams, freeSlotsParams,
+                        time1.getText().toString(), time2.getText().toString());
 
             }
         });
@@ -203,6 +217,21 @@ public class AddEventFragment extends Fragment {
         //addEvent.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
         addEvent.setMinimumWidth(width);
         addEvent.requestLayout();
+
+        city.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.goToCitiesActivity(SettingConnections.context);
+
+            }
+        });
+
+        field.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.goToFieldsActivity(SettingConnections.context);
+            }
+        });
 
 
 

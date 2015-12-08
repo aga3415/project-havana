@@ -74,6 +74,18 @@ public class MainActivity extends FragmentActivity {
         context.startActivity(userDetailsActiivity);
     }
 
+    public static void goToCitiesActivity(Context context){
+        Intent citiesList = new Intent(instance, Cities.class);
+        citiesList.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(citiesList);
+    }
+
+    public static void goToFieldsActivity(Context context){
+        Intent fieldsList = new Intent(instance, Fields.class);
+        fieldsList.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(fieldsList);
+    }
+
     public void changePage(int page){
 
         //if (viewPager == null) {

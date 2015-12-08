@@ -57,7 +57,7 @@ public class GetAllApplicationsForEvent extends AsyncTask<String, Boolean, Boole
         }
 
 
-        return null;
+        return true;
     }
 
     protected void onPostExecute(Boolean result){

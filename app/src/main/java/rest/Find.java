@@ -28,7 +28,7 @@ public class Find extends AsyncTask<String, String, Boolean> {
 
     FragmentFindEvents fragmentEvents;
     ArrayList<Event> events;
-    String [] paramsToFind = {"city=", "field=", "dateMore=", "dateLess=", "priceLess=", "freeSlotsMore="};
+    String [] paramsToFind = {"city=", "field=", "dateMore=", "dateLess=", "priceLess=", "freeSlotsMore=", "hourMore=", "hourLess="};
     String methodConcat = "&";
 
 
@@ -49,17 +49,19 @@ public class Find extends AsyncTask<String, String, Boolean> {
         //[2] - date from, [3] - date to
         //[4] - price
         //[5] - freeSlots
+        //[6] - hourFrom
+        //[7] - hourTo
 
-        fragmentEvents.eventsListView.setVisibility(View.GONE);
+        //fragmentEvents.eventsListView.setVisibility(View.GONE);
 
 
-        for (int i=0; i<=5; i++){
+        for (int i=0; i<=7; i++){
             if (!params[i].equals("")) method += paramsToFind[i] + params[i] + methodConcat;
         }
         method = method.substring(0, method.length()-1); //pozbywam sie ostatniego &
 
-        fragmentEvents.errorTextView.setVisibility(View.VISIBLE);
-        fragmentEvents.errorTextView.setText(method);
+        //fragmentEvents.errorTextView.setVisibility(View.VISIBLE);
+        //fragmentEvents.errorTextView.setText(method);
 
         get = new HttpGet(SettingConnections.apiName.concat(method));
         get.setHeader("Authorization", SettingConnections.token);
